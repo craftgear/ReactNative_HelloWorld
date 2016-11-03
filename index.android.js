@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { AppRegistry, View, Text, TextInput, Image, StatusBar, Dimensions, StyleSheet } from 'react-native';
+import { AppRegistry, View, ScrollView, Text, TextInput, Image, StatusBar, Dimensions, StyleSheet } from 'react-native';
 
 let screenHeight = Dimensions.get("window").height;
 class Greeting extends Component {
@@ -98,10 +98,52 @@ class PizzaTranslator extends Component {
     )
   }
 }
-export default class ReactNative_HelloWorld extends Component {
+
+class IScrolledDownAndWhatHappenedNextShockedMe extends Component {
   render() {
     return (
-      <PizzaTranslator/>
+      <ScrollView>
+        <Text style={{fontSize: 96}}>Scroll Me Plz</Text>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Text style={{fontSize: 96}}>If you like</Text>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Text style={{fontSize: 96}}>Scrolling down</Text>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Text style={{fontSize: 96}}>What's the best</Text>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Text style={{fontSize: 96}}>Framework around?</Text>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Image source={require('./img/favicon.png')}></Image>
+        <Text style={{fontSize: 96}}>React Native</Text>
+      </ScrollView>
+    )
+  }
+}
+
+
+class ReactNative_HelloWorld extends Component {
+  render() {
+    return (
+      <IScrolledDownAndWhatHappenedNextShockedMe />
     );
   }
 }
