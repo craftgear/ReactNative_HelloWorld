@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { AppRegistry, View, ScrollView, Text, TextInput, Image, StatusBar, Dimensions, StyleSheet } from 'react-native';
+import { AppRegistry, View, ListView, ScrollView, Text, TextInput, Image, StatusBar, Dimensions, StyleSheet } from 'react-native';
 
 let screenHeight = Dimensions.get("window").height;
 class Greeting extends Component {
@@ -87,7 +87,6 @@ class PizzaTranslator extends Component {
     return (
       <View style={{padding: 10}}>
       <TextInput
-        style={{height: 40}}
         placeholder="Type here to translate!"
         onChangeText={(text) => this.setState({text})}
       />
@@ -139,11 +138,34 @@ class IScrolledDownAndWhatHappenedNextShockedMe extends Component {
   }
 }
 
+class ListViewBasics extends Component {
+  constructor(props) {
+    super(props);
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => {r1 != r2}})
+    this.state = {
+      dataSource: ds.cloneWithRows([
+        'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin'
+      ])
+    }
+  }
+
+  render() {
+    return (
+      <View style={{flex:1, paddingTop: 22}}>
+      <ListView
+        dataSource={this.state.dataSource}
+        renderRow={(rowData) => <Text style={{paddingTop: 58, fontSize: 48}}>{rowData}</Text>}
+      />
+      </View>
+    )
+  }
+}
+
 
 class ReactNative_HelloWorld extends Component {
   render() {
     return (
-      <IScrolledDownAndWhatHappenedNextShockedMe />
+      <ListViewBasics />
     );
   }
 }
