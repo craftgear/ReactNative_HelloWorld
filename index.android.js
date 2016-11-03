@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { AppRegistry, View, Text, Image, StatusBar, Dimensions, StyleSheet } from 'react-native';
+import { AppRegistry, View, Text, TextInput, Image, StatusBar, Dimensions, StyleSheet } from 'react-native';
 
 let screenHeight = Dimensions.get("window").height;
 class Greeting extends Component {
@@ -63,19 +63,45 @@ const styles = StyleSheet.create({
 class FixedDimensionsBasics extends Component {
   render() {
     return (
-      <View style={{flex: 1}}>
-        <View style={{flex: 1,backgroundColor: 'powderblue'}}></View>
-        <View style={{flex: 2,backgroundColor: 'skyblue'}}></View>
-        <View style={{flex: 3,backgroundColor: 'steelblue'}}></View>
+      <View style={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'stretch',
+      }}>
+        <View style={{height: 50 ,backgroundColor: 'powderblue'}}></View>
+        <View style={{height: 50 ,backgroundColor: 'skyblue'}}></View>
+        <View style={{height: 50 ,backgroundColor: 'steelblue'}}></View>
       </View>
     )
   }
 }
 
+class PizzaTranslator extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
+
+  render() {
+    return (
+      <View style={{padding: 10}}>
+      <TextInput
+        style={{height: 40}}
+        placeholder="Type here to translate!"
+        onChangeText={(text) => this.setState({text})}
+      />
+      <Text style={{padding: 10, fontSize: 42}}>
+        {this.state.text.split(' ').map(v => v && '🍕').join(' ')}
+      </Text>
+      </View>
+    )
+  }
+}
 export default class ReactNative_HelloWorld extends Component {
   render() {
     return (
-      <FixedDimensionsBasics></FixedDimensionsBasics>
+      <PizzaTranslator/>
     );
   }
 }
