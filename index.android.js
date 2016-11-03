@@ -5,7 +5,8 @@
  */
 
 import React, { Component } from 'react';
-import { AppRegistry, View, ListView, ScrollView, Text, TextInput, Image, StatusBar, Dimensions, StyleSheet } from 'react-native';
+import { AppRegistry, View, ListView, ScrollView, Text, TextInput, Image, StatusBar, Dimensions, StyleSheet, Navigator } from 'react-native';
+import MyScene from './components/MyScene';
 
 let screenHeight = Dimensions.get("window").height;
 class Greeting extends Component {
@@ -161,12 +162,30 @@ class ListViewBasics extends Component {
   }
 }
 
-
 class ReactNative_HelloWorld extends Component {
   render() {
     return (
-      <ListViewBasics />
-    );
+      <Navigator
+        initialRoute={{ title: 'My Initial Scene', index: 0 }}
+        renderScene={(route, navigator) => 
+          <MyScene
+            title={route.title}
+            onForward={ () => {
+              const nextIndex = route.index + 1;
+              navigator.push({
+                title: `Scene ${nextIndex}`,
+                index: nextIndex,
+              });
+            } }
+            onBack={() => {
+              if (route.index > 0) {
+                navigator.pop();
+              }
+            }}
+          />
+        }
+      />
+    )
   }
 }
 
