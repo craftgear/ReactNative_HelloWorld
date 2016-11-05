@@ -162,7 +162,7 @@ class ListViewBasics extends Component {
   }
 }
 
-class ReactNative_HelloWorld extends Component {
+class NavigatorBasic extends Component {
   render() {
     return (
       <Navigator
@@ -189,4 +189,24 @@ class ReactNative_HelloWorld extends Component {
   }
 }
 
+class ImageLoader extends Component {
+  render() {
+    return (
+      <View style={{flex:1, alignItems:'center', justifyContent:'center'}}>
+        <View style={{flex:1}}></View>
+        <Image style={{
+          flex: 1,
+        }} source={require('./hoge.jpg')}></Image>
+        <View style={{flex:1}}></View>
+      </View>
+    )
+  }
+}
+class ReactNative_HelloWorld extends Component {
+  render() {
+    return <ImageLoader />
+  }
+}
+
 AppRegistry.registerComponent('ReactNative_HelloWorld', () => ReactNative_HelloWorld);
+
